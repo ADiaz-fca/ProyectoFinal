@@ -29,10 +29,10 @@ public class ProyectoTest {
 	    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	  }
 	
-	
+	/*
 	@Test
-	public void agregarTest() throws InterruptedException {
-		driver.get("https://mern-crud.herokuapp.com/");
+	public void loginTest() throws InterruptedException {
+		driver.get("https://es.uadyvirtual.uady.mx/login/index.php");
 	    WebElement e=driver.findElement(By.xpath("//div[@id='root']/div/div[2]/button"));
 	    e.click();
 	    //Variables auxiliares para el manejo de los elementos
@@ -64,48 +64,38 @@ public class ProyectoTest {
 	    resultadoEjecucion=r.getText();
 	    assertThat(resultadoEsperado, equalTo(resultadoEjecucion));
 	}
+	*/
 	
 	@Test
-	public void editarTest() throws InterruptedException {
-		driver.get("https://mern-crud.herokuapp.com/");
-		//Presionando el boton editar
-	    WebElement e=driver.findElement(By.xpath("//div[@id='root']/div/div[2]/table/tbody/tr/td[5]/button"));
+	public void loginFailTest() throws InterruptedException {
+		//Ingresando a la pagina de login
+		driver.get("https://es.uadyvirtual.uady.mx/login/index.php");
+		//Ingresando nombre de usuario
+	    WebElement e=driver.findElement(By.id("username"));
 	    e.click();
-	    //Variables auxiliares para el manejo de los elementos
-	    String name="qwerty";
-	    String email="qwerty@cloud1.com";
-	    String age ="25";
-	    //Ingresando los valores de nombre, email y edad
-	    e=driver.findElement(By.name("name"));
 	    e.clear();
-	    e.sendKeys(name);
-	    e=driver.findElement(By .name("email"));
-	    e.clear();
-	    e.sendKeys(email);
-	    e=driver.findElement(By .name("age"));
-	    e.clear();
-	    e.sendKeys(age);
-	    //Eligiendo el genero de una lista
-	    e=driver.findElement(By .xpath("/html/body/div[2]/div/div[2]/form/div[3]/div[2]/div"));
-	    e.click();
-	    e=driver.findElement(By .xpath("/html/body/div[2]/div/div[2]/form/div[3]/div[2]/div[1]"));
+	    e.sendKeys("a00002950");
+	    //Dejmos la contraseña vacía
+	    e=driver.findElement(By .xpath("//form[@id='login']/div[3]"));
+	    e.clear(); //No ingresamos valores
+	    e=driver.findElement(By .id("loginbtn"));
 	    e.click();
 	 
-	    //Presionando el boton agregar
-	    e=driver.findElement(By .xpath("/html/body/div[2]/div/div[2]/form/button"));
+	    //Presionando el boton ingresar
+	    e=driver.findElement(By .id("loginbtn"));
 	    e.click();
 	    //Metemos un tiempo de espera para evitar errores
 	    TimeUnit.SECONDS.sleep(5);
 	    
-	    String resultadoEsperado = "Successfully updated!";
+	    String resultadoEsperado = "Datos erróneos. Por favor, inténtelo otra vez";
 	    String resultadoEjecucion = "";
-	    WebElement r=driver.findElement(By .xpath("/html/body/div[2]/div/div[2]/form/div[4]/div/p"));
+	    WebElement r=driver.findElement(By .xpath("/html/body/div/div/div/div/div/div/div/span"));
 	    resultadoEjecucion=r.getText();
 	    assertThat(resultadoEsperado, equalTo(resultadoEjecucion));	   
 	    
 	}
 	
-	
+	/*
 	//@TODO Verificar eliminacion
 	@Test
 	public void eliminarTest() throws InterruptedException{
@@ -125,7 +115,7 @@ public class ProyectoTest {
 		assertThat(resultadoEsperado,equalTo(resultadoEjecucion));
 		 
 	}
-	
+	*/
 	
 	@After
 	public void tearDown() throws Exception {
