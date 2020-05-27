@@ -32,6 +32,7 @@ public class PruebasProyectoFinal {
 	    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	  }
 	
+	/*
 	@Test
 	public void agregarTest() throws InterruptedException {
 		driver.get("https://mern-crud.herokuapp.com/");
@@ -66,7 +67,9 @@ public class PruebasProyectoFinal {
 	    resultadoEjecucion=r.getText();
 	    assertThat(resultadoEsperado, equalTo(resultadoEjecucion));
 	}
+	*/
 	
+	/*
 	@Test
 	public void editarTest() throws InterruptedException {
 		driver.get("https://mern-crud.herokuapp.com/");
@@ -105,7 +108,9 @@ public class PruebasProyectoFinal {
 	    resultadoEjecucion=r.getText();
 	    assertThat(resultadoEsperado, equalTo(resultadoEjecucion));	   
 	    
-	}
+	} */
+	
+	
 	
 	//@TODO Verificar eliminacion
 		@Test
@@ -118,13 +123,11 @@ public class PruebasProyectoFinal {
 			e=driver.findElement(By .xpath("//div[3]/button"));
 			e.click();
 			//Damos un tiempo de espera de 5 segundos
-			TimeUnit.SECONDS.sleep(5);
+			TimeUnit.SECONDS.sleep(2);
 			
-			
-			WebElement r=driver.findElement(By .name("qwerty"));
-			String resultadoEjecucion = r.getText();
-			
-			 
+			String r=driver.findElement(By .cssSelector("BODY")).getText();
+			assertFalse(r.matches("^[//s//]*SQwerty[//s//S]*$"));
+				 
 		}
 		
 		
